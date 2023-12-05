@@ -1,7 +1,7 @@
 # app.py
 from flask import Flask
 from models import db
-from routes import mushrooms_bp
+from routes.mushrooms import mushrooms_bp  # Update import path
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mushrooms.db'  # Use SQLite database
