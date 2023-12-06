@@ -18,7 +18,7 @@ mushroom_model = api.model('Mushroom', {
     'edible': fields.Boolean(description='Is the mushroom edible?')
 })
 
-@namespace.route('/mushrooms')
+@namespace.route('/')
 class MushroomsResource(Resource):
     @namespace.marshal_with(mushroom_model, envelope='mushrooms')
     def get(self):
@@ -47,7 +47,7 @@ class MushroomsResource(Resource):
             db.session.rollback()
             api.abort(500, 'Internal Server Error', error=str(e))
 
-@namespace.route('/mushrooms/<int:mushroom_id>')
+@namespace.route('/<int:mushroom_id>')
 @namespace.response(404, 'Mushroom not found')
 @namespace.param('mushroom_id', 'The mushroom identifier')
 class MushroomResource(Resource):
