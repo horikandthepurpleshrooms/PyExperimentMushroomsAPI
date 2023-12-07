@@ -13,4 +13,5 @@ with app.app_context():
 app.register_blueprint(mushrooms_bp, url_prefix='/api')
 
 if __name__ == '__main__':
+    app.logger.info("Application started!")
     app.run(debug=True)
